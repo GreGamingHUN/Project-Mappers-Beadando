@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappers - Pont szerkesztése</title>
+</head>
+<body>
+    <h1>Pont szerkesztése</h1>
+    <form action="editBlipQuery" method="post">
+        Pont koordinátái: <br> 
+        <input type="hidden" name="posx" value="<%- blipData.x %>">
+        <input type="hidden" name="posy" value="<%- blipData.y %>">
+        <input type="hidden" name="detailsid" value="<%- blipDetails.detailsid %> ">
+        Pont típusa: <select name="blipType">
+            <% blipTypes.forEach(element => { %>
+                <% if (element.typeid == blipData.blip_type) { %>
+                    <option selected value=<%- element.typeid %>><%- element.type_name %> </option>
+                <% } else { %>
+                    <option value=<%- element.typeid %>><%- element.type_name %> </option>
+                <% } %>
+            <% }) %>
+        </select><br><br>
+        Hely neve <br>
+        <input type="text" name="title" value="<%- blipDetails.title %>"><br>
+        Hely leírása: <br>
+        <textarea name="description" cols="30" rows="10"><%- blipDetails.details_desc %></textarea><br>
+        <button type="submit" name="blipid" value="<%- blipData.blipid %>">Pont hozzáadása</button>
+    </form>
+</body>
+</html>

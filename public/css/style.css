@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#map {
+    height: 100vh; 
+    width: 100vw;
+    z-index: 0;
+}
+
+.leaflet-container {
+    background: rgb(15, 168, 210);;
+    outline: 0;
+}
+
+.addBlip {
+    background: rgb(91, 216, 86);
+    border: none;
+    color: whitesmoke;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.addBlip:hover {
+    filter: brightness(110%);
+}

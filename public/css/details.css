@@ -1,0 +1,53 @@
+.details-container {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 25vh;
+    background: black;
+    z-index: 3;
+    color: whitesmoke;
+}
+
+#details-container {
+    display: none;
+}
+
+.details-text-container {
+    padding: 25px;
+}
+
+.details-text-container h1 {
+    margin-bottom: 11px;
+}
+
+.button-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 45px;
+    display: flex;
+    gap: 15px;
+}
+
+.button-container button {
+    padding: 10px;
+    color: whitesmoke;
+    background: none;
+    border: none;
+    border-radius: 15px;
+    transition: .1s ease-in-out;
+}
+
+.button-container button:hover {
+    transition: .1s ease-in-out;
+    filter: brightness(120%);
+}
+
+#deleteBlip {
+    background: rgb(209, 60, 60);
+}
+
+#editBlip {
+    background: rgb(50, 132, 226);
+}

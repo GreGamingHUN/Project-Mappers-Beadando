@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mappers - Kezdőlap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+     <link rel="stylesheet" href="/css/style.css">
+     <link rel="stylesheet" href="/css/details.css">
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map', {
+            crs: L.CRS.Simple,
+            minZoom: -1,
+            maxZoom: 2
+        });
+        var bounds = [[0, 0], [2048, 2048]];
+        var image = L.imageOverlay('/img/map.png', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+        var raceIcon = L.icon({
+            iconUrl: 'img/race.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+
+        var shopIcon = L.icon({
+            iconUrl: 'img/shop.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+
+        var stuntIcon = L.icon({
+            iconUrl: 'img/stunt_jump.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+
+        var houseIcon = L.icon({
+            iconUrl: 'img/house.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+
+        var garageIcon = L.icon({
+            iconUrl: 'img/garage.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+        var tennisIcon = L.icon({
+            iconUrl: 'img/tenis.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+        var officeIcon = L.icon({
+            iconUrl: 'img/office.png',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [-3, -76],
+            shadowSize: [68, 95],
+            shadowAnchor: [22, 94]
+        });
+        let markers = [];
+        let districts = [];
+        let tmp;
+        '<% results.forEach(element => { %>'
+            switch ('<%- element.type_name %>') {
+                case 'race':
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: raceIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map))
+                    break;
+                case 'shop':
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: shopIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map));
+                    break;
+                case 'stunt':
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: stuntIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map));
+                    break;
+                case 'house':
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: houseIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map));
+                    break;
+                case 'garage':
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: garageIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map));
+                    break;
+                case 'tennis': 
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: tennisIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map));
+                    break;
+                case 'office':
+                    tmp = L.marker(['<%- element.x %>', '<%- element.y %>'], { icon: officeIcon });
+                    tmp.on('click', onBlipClick);
+                    tmp.blipid = '<%- element.blipid %>'
+                    tmp.blip_desc_id = '<%- element.blip_desc_id %>'
+                    markers.push(tmp.addTo(map));
+                    break;
+                default:
+                    markers.push(L.marker(['<%- element.x %>', '<%- element.y %>']).addTo(map))
+                    break;
+            }
+        '<% }) %>'
+
+        function onMapClick(e) {
+            let container = document.getElementById('details-container');
+            container.style.display = "none";
+            let popup = L.popup().setLatLng(e.latlng)
+            .setContent(`
+            <form action="addBlip" method="post">
+                <button class="addBlip" type="submit" name="coords" value=${JSON.stringify(e.latlng)}>Új pont hozzáadása</button>
+            </form>
+            `)
+            .openOn(map);
+            console.log(e.latlng)
+        }
+
+        function onBlipClick(blip) {
+            console.log(blip.target)
+            let container = document.getElementById('details-container');
+            let title = document.getElementById('blip-title');
+            let details = document.getElementById('blip-details');
+            container.style.display = "initial";
+            let deleteButton = document.getElementById('deleteBlip');
+            let editButton = document.getElementById('editBlip');
+            console.dir(blip.target.blip_desc_id)
+            deleteButton.value = blip.target.blipid;
+            editButton.value = blip.target.blipid;
+
+            '<% blipDetails.forEach(element => { %>'
+                if (Number('<%- element.detailsid %>') == Number(blip.target.blip_desc_id)) {
+                    title.innerText = '<%- element.title %>'
+                    details.innerText = '<%- element.details_desc %>'
+                }
+            '<% }) %>'
+
+        }
+
+        map.on('click', onMapClick);
+    </script>
+    <%- include('../partials/details') %>
+</body>
+
+</html>
