@@ -8,4 +8,4 @@ Futtatáshoz:
 
 Az adatbázishoz tartozó táblák létrhezosához szükséges kód a [createTables.sql](https://github.com/GreGamingHUN/Project-Mappers-Beadando/blob/master/createTables.sql)-ben található.
 
-Az SQL query-k külön, a [queries.js](https://github.com/GreGamingHUN/Project-Mappers-Beadando/blob/master/queries.js)-ben találhatóak.
+Az SQL query-k (valamint a connection string) külön, a [queries.js](https://github.com/GreGamingHUN/Project-Mappers-Beadando/blob/master/queries.js)-ben találhatóak.
